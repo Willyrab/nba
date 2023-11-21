@@ -1,0 +1,28 @@
+{
+	"info": {
+		"_postman_id": "b688ed09-4689-45fa-8be6-b16e9181ca3c",
+		"name": "NBA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30995442"
+	},
+	"item": [
+		{
+			"name": "insertStat",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ppm\" : 10 ,\r\n    \"npm\" : 5,\r\n    \"pdmp\" : 8 ,\r\n    \"pmp\" : 12,\r\n    \"eff\" : 20,\r\n    \"fg\" : 30 ,\r\n    \"point\" : 15 ,\r\n    \"joueur\" : {\"id\" : 2 }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/statistiques"
+			},
+			"response": []
+		}
+	]
+}
