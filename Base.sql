@@ -23,6 +23,23 @@ create table joueur_equipe (
     equipe INT REFERENCES equipes(id)
 );
 
+INSERT INTO joueur_equipe (joueur, equipe) VALUES
+(1, 1),
+(2, 2);-- Équipe 1 (Golden State Warriors)
+
+create view coequipier as 
+select j.nom as nom_joueur ,
+       j.prenom ,
+       j.taille ,
+       j.poids ,
+       j.id as id_joueur ,
+       e.nom as nom_equipe ,
+       e.id as id_equipe
+from joueur_equipe je 
+    join equipes e on je.equipe = e.id 
+    join joueurs j on je.joueur = j.id;
+    
+
 
 INSERT INTO joueurs (nom, prenom, taille, poids) VALUES
 ('Durant', 'Kevin', 208, 109),
@@ -57,14 +74,7 @@ INSERT INTO equipes (nom, coach) VALUES
 ('Brooklyn Nets', 'Steve Nash');
 
 -- Insérer de nouveaux joueurs dans la table joueur_equipe (IDs de joueur commençant par 6)
-INSERT INTO joueur_equipe (joueur, equipe) VALUES
-(6, 1), (7, 1), (8, 1), (9, 1), (10, 1), -- Équipe 1 (Golden State Warriors)
 
-(11, 2), (12, 2), (13, 2), (14, 2), (15, 2), -- Équipe 2 (Los Angeles Lakers)
-
-(16, 3), (17, 3), (18, 3), (19, 3), (20, 3), -- Équipe 3 (Milwaukee Bucks)
-
-(21, 4), (22, 4), (23, 4), (24, 4), (25, 4); -- Équipe 4 (Brooklyn Nets)
 
 
 select*from joueur_equipe je 
@@ -72,18 +82,7 @@ select*from joueur_equipe je
     join joueurs j on je.joueur = j.id;
 
 
-create view coequipier as 
-select j.nom as nom_joueur ,
-       j.prenom ,
-       j.taille ,
-       j.poids ,
-       j.id as id_joueur ,
-       e.nom as nom_equipe ,
-       e.id as id_equipe
-from joueur_equipe je 
-    join equipes e on je.equipe = e.id 
-    join joueurs j on je.joueur = j.id;
-      
+  
 
 create table match (
     id serial primary key,
@@ -126,6 +125,8 @@ create table statistique (
 
 select*from statistique s 
     join duel d on d.id_joueur = s.joueur ;
+
+
 
 create view statistique_joueur as 
 select*from statistique s 
