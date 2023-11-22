@@ -22,15 +22,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/statistiques")
 public class StatistiqueController {
 
+   
     @Autowired
     private StatistiqueService statistiqueService;
 
     @PostMapping
     public ResponseEntity<Statistique> ajouterStatistique(@RequestBody Statistique statistique) {
-        Statistique nouvelleStatistique = statistiqueService.ajouterStatistique(statistique);
-        return new ResponseEntity<>(nouvelleStatistique, HttpStatus.CREATED);
+        try {
+            Statistique nouvelleStatistique = statistiqueService.ajouterStatistique(statistique);
+            return new ResponseEntity<>(nouvelleStatistique, HttpStatus.CREATED);
+        } catch (Exception e) {
+            // Vous pouvez personnaliser cette partie pour gérer différentes exceptions
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
-
     // Ajoutez d'autres méthodes du contrôleur selon vos besoins
 
 }

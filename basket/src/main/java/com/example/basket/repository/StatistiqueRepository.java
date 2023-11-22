@@ -11,6 +11,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author Admin
  */
+
 public interface StatistiqueRepository extends JpaRepository<Statistique, Long> {
     // Ajoutez des méthodes personnalisées si nécessaire
 }
